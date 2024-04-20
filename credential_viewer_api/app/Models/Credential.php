@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Credential extends Model
 {
     use HasFactory;
-    protected $primaryKey="credential_id";
-    protected $fillable=["credential_key","credential_value","categorie_id"];
+    protected $primaryKey = "credential_id";
+    protected $fillable = ["credential_key", "credential_type", "credential_value", "categorie_id"];
 }
