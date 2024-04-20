@@ -33,6 +33,7 @@ Route::middleware(["auth:sanctum"])->group(function () {
     Route::delete("/credential/delete_category/{category_id}", [CategorieController::class, "deleteCategory"]);
     // credentials routes
     Route::get("/credential/get_decryptes_values/{credential_id}", [CredentialsController::class, "getDecryptesValues"]);
+    Route::post("/credential/GetFileFromStoragePath", [CredentialsController::class, "GetFileFromStoragePath"]);
     Route::post("/credential/create_credential", [CredentialsController::class, "creadeCredential"]);
     Route::post("/credential/create_credential_as_file", [CredentialsController::class, "creeateCredentialAsFile"]);
     Route::delete("/credential/delete_credential/{credential_id}", [CredentialsController::class, "deleteCredential"]);

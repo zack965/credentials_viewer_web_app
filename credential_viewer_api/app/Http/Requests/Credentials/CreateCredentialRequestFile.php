@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Credentials;
 
+use App\AppConfig\AllowdExtensionsFiles;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateCredentialRequestFile extends FormRequest
@@ -23,7 +24,7 @@ class CreateCredentialRequestFile extends FormRequest
     {
         return [
             "credential_key" => "required|string",
-            'credential_value_file' => 'required|file|mimes:*',
+            'credential_value_file' => 'required|file|mimes:' . implode(', ', AllowdExtensionsFiles::getAllowdExtensionsFilesList()),
             "categorie_id" => "required|numeric",
         ];
     }

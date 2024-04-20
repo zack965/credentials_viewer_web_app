@@ -2,17 +2,30 @@
 
 namespace App\Services;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class FileService
 {
-    public static function StoreFileToPublicPath(Request $request, $directory, $request_key)
+    public static function StoreFileToStoragePath(Request $request, $directory, $request_key)
     {
         $file = $request->file($request_key);
         $fileName = uniqid() . $file->getClientOriginalName();
-        $destinationPath = public_path() . '/' . $directory;
+        $destinationPath = storage_path() . '/' . $directory;
         $file->move($destinationPath, $fileName);
         $fullpath = $directory . '/' . $fileName;
-        return env("APP_URL") . "/" . $fullpath;
+        return $fullpath;
+    }
+    public static function GetFileFromStoragePath(string $file_path): JsonResponse|BinaryFileResponse
+    {
+        $filePath = storage_path($file_path);
+        if (!file_exists($filePath)) {
+            // return ["msg" => "not found"];
+            return response()->json(["ddd" => ",kkkk"], 422);
+        }
+        //  return response()->download($filePath);
+        //return response()->json(["ddd" => ",kkkk"]);
+        return response()->download($filePath);
     }
 }

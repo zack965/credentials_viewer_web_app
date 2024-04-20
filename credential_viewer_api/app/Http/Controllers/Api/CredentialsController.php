@@ -9,6 +9,7 @@ use App\Models\Credential;
 use App\Services\FileService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Http\Request;
 
 class CredentialsController extends Controller
 {
@@ -44,7 +45,7 @@ class CredentialsController extends Controller
     {
         $credential_value_file = null;
         if ($createCredentialRequestFile->hasFile("credential_value_file")) {
-            $credential_value_file = FileService::StoreFileToPublicPath($createCredentialRequestFile, "credential_value_file", "credential_value_file");
+            $credential_value_file = FileService::StoreFileToStoragePath($createCredentialRequestFile, "credential_value_file", "credential_value_file");
         }
         $credential = Credential::create([
             "credential_key" => $createCredentialRequestFile->credential_key,
@@ -53,5 +54,12 @@ class CredentialsController extends Controller
             "credential_type" => "file"
         ]);
         return response()->json($credential);
+    }
+    public function GetFileFromStoragePath(Request $request)
+    {
+        $request->validate([
+            "file_path" => "required"
+        ]);
+        return FileService::GetFileFromStoragePath($request->file_path);
     }
 }
