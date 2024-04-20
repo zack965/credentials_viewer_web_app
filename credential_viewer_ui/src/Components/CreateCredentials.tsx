@@ -11,22 +11,14 @@ import {
 import { ZodError, z } from 'zod';
 import { IAlertData } from '../AppInterfaces/IAlertData';
 import { ApiClient } from '../API/ApiClient';
+import { ErrorObject, ErrorsByKey } from '../Types/types';
 
 interface CreateCredentialsPrpos {
     category_id: number | null;
     fetchCredentials: () => void;
     setAlertData: React.Dispatch<React.SetStateAction<IAlertData | null>>;
 }
-interface Issue {
-    path: string[];
-    message: string;
-}
-interface ErrorObject {
-    issues: Issue[];
-}
-interface ErrorsByKey {
-    [key: string]: string[] | undefined;
-}
+
 
 function CreateCredentials({ category_id, fetchCredentials, setAlertData }: CreateCredentialsPrpos) {
     const [open, setOpen] = useState(false);

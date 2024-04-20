@@ -5,5 +5,6 @@ export interface Cridential {
     created_at: string
     updated_at: string
     categorie_id: number
+    credential_type:"file"|"text"
   }
   
