@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Credentials\CreateCredentialRequestFile;
 use App\Http\Requests\Credentials\CreateCredentials;
+use App\Models\Category;
 use App\Models\Credential;
 use App\Services\FileService;
 use Illuminate\Http\JsonResponse;
@@ -16,6 +17,10 @@ class CredentialsController extends Controller
     //
     public function creadeCredential(CreateCredentials $createCredentials): JsonResponse
     {
+        $categorie = Category::find($createCredentials->categorie_id);
+        if (!$categorie) {
+            return response()->json(["msg" => "categorie not found"], 404);
+        }
         $credential = Credential::create([
             "credential_key" => $createCredentials->credential_key,
             "credential_value" => Crypt::encrypt($createCredentials->credential_value),

@@ -11,27 +11,30 @@ use Illuminate\Support\Facades\Auth;
 class CategorieController extends Controller
 {
     //
-    public function getData():JsonResponse
+    public function getData(): JsonResponse
     {
-         $categories = Category::with(["parentCategories","cridentials"])->where("user_id",Auth::id())
-         ->get();
+        //parentCategories
+        $categories = Category::with(["cridentials"])->where("user_id", Auth::id())
+            ->get();
         return response()->json($categories);
     }
-    public function createCategory(CreateCategoryRequest $createCategoryRequest){
+    public function createCategory(CreateCategoryRequest $createCategoryRequest)
+    {
         $category = Category::create([
-            "categorie_name"=>$createCategoryRequest->categorie_name,
-            "categorie_description"=>$createCategoryRequest->categorie_description,
-            "user_id"=>Auth::id()
+            "categorie_name" => $createCategoryRequest->categorie_name,
+            "categorie_description" => $createCategoryRequest->categorie_description,
+            "user_id" => Auth::id()
         ]);
-        return response()->json($category,200);
+        return response()->json($category, 200);
     }
-    public function deleteCategory($category_id){
+    public function deleteCategory($category_id)
+    {
         $category = Category::find($category_id);
-        if(!$category){
-            return response()->json(null,404);
+        if (!$category) {
+            return response()->json(null, 404);
         }
         $category->cridentials->each->delete();
         $category->delete();
-        return response()->json(null,200);
+        return response()->json(null, 200);
     }
 }
