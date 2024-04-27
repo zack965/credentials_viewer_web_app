@@ -21,11 +21,8 @@ class FileService
     {
         $filePath = storage_path($file_path);
         if (!file_exists($filePath)) {
-            // return ["msg" => "not found"];
             return response()->json(["ddd" => ",kkkk"], 422);
         }
-        //  return response()->download($filePath);
-        //return response()->json(["ddd" => ",kkkk"]);
         return response()->download($filePath);
     }
 }
