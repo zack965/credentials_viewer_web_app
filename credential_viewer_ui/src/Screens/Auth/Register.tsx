@@ -26,7 +26,7 @@ function Register() {
     e.preventDefault();
     const user_login_schema = z.object({
       email: z.string().min(10, { message: "email must have more then 10 charachters" }).email().max(255),
-      password: z.string().min(10, { message: "password must have more then 10 charachter" }).max(255),
+      password: z.string().min(6, { message: "password must have more then 6 charachter" }).max(255),
       name: z.string().min(2, { message: "name must have more then 2 charachter" }).max(255),
     });
     try {
