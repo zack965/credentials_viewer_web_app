@@ -9,7 +9,7 @@ In a sinple words this app can store your credentials in shape of categories , a
 ## Technical overview
 the tech stack is simple , i did use laravel for the back end and react js for the front end and the Authentification using JWT
 
-## Set up 
+### Set up 
 after you cloning the projet you will see two folder , the first folder credential_viewer_api store the laravel app , and credential_viewer_ui store the react js app.
 Set up the react js app without docker
 
@@ -84,7 +84,7 @@ DB_USERNAME=sail
 DB_PASSWORD=password
 ```
 
-if you are using linux or mac it's ok , but if you use windows you will need to use wsl
+if you are using linux or mac then you are ok, but if you use windows you will need to use wsl
 
 i do use ubuntu and i did face some permission issues so here is the solution that worked for me :
 ```bash
@@ -97,6 +97,5 @@ and then exit :
 ```bash
 exit
 ```
-
 
 
