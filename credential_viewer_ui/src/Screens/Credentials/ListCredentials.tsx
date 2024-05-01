@@ -48,7 +48,7 @@ function ListCredentials() {
   const [credential_value_as_file, setcredential_value_as_file] = useState<File>();
   const DonwnloadFile = (file_path: string) => {
     const data = new FormData();
-    data.append('file_path', 'credential_value_file/66242a422a319cv__elhossni_zakaria_english.pddf');
+    data.append('file_path', file_path);
 
 
 
@@ -350,7 +350,7 @@ function ListCredentials() {
         }
       })
       .then(() => {
-        fetchCredentials();
+        queryClient.invalidateQueries("fetchCredentials")
       })
       .catch((error) => {
         console.log(error);
@@ -709,7 +709,7 @@ function ListCredentials() {
                     >
                       <FontAwesomeIcon icon={faTrash} />
                     </IconButton>
-                    <IconButton
+                    {item_credentials.credential_type == "text" ?  <IconButton
                       color="blue"
                       className="mx-2"
                       onClick={() => {
@@ -726,7 +726,8 @@ function ListCredentials() {
                       }}
                     >
                       <FontAwesomeIcon icon={faCopy} />
-                    </IconButton>
+                    </IconButton> : null}
+                   
                     {/*  <CreateCredentials category_id={item_credentials.categorie_id} fetchCredentials={fetchCredentials} /> */}
                   </div>
                 </div>
