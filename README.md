@@ -4,7 +4,7 @@ In my work i needed a way to manage my list of credentials to multiple services 
 I want to make it open source so other peolple can benefit from it and store he's own credentials in he's prefered envirement, it os dockerized so you can run it on your server or your local machine etc..
 
 ## Application functional overview
-In a sinple words this app can store your credentials in shape of categories , and each category can have multiple credentials , and each credential has it's own key and encrypted value.
+In a sinple words this app can store your credentials in shape of categories , and each category can have multiple credentials , and each credential has it's own key and encrypted value, the value could be a file and it is stored directly on the app.
 
 ## Technical overview
 the tech stack is simple , i did use laravel for the back end and react js for the front end and the Authentification using JWT
