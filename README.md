@@ -1,12 +1,10 @@
 # Credential Viewer App
+## Introduction 
+In my work i needed a way to manage my list of credentials to multiple services like Jenkins , Gitlab , Servers and Databases etc... , so i did create this web app for doing so , i did built this app based on my needs so there's not many features but i am sure your needs are different from mine so if you want more features just open an issue or send a PR.
+I want to make it open source so other peolple can benefit from it and store he's own credentials in he's prefered envirement, it os dockerized so you can run it on your server or your local machine etc..
 
 ## Application functional overview
-In my work i needed a way to manage my list of credentials to multiple servicesm Jenkins , Gitlab , Servers , Databases etc...
-so i did built this app for managing my Credentials in a shape of categories and each categorie contains a list of credentials , each credential contain key and it's value . The value is encrypted and you can decrypt it and copying it . I did add support for store credentials as file and they are stored in the app for security reasons.
-## why i did make this app in public and not as a service
-
-i did make this tool public for developers because this isn't just my probleme , and a lot developers out there hqve this issue. 
-This is a very important data and it should be saved in a secure envir
+In a sinple words this app can store your credentials in shape of categories , and each category can have multiple credentials , and each credential has it's own key and encrypted value.
 
 ## Technical overview
 the tech stack is simple , i did use laravel for the back end and react js for the front end and the Authentification using JWT
