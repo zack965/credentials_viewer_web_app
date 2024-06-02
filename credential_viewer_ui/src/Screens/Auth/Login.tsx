@@ -25,7 +25,7 @@ function Login() {
     e.preventDefault();
     const user_login_schema = z.object({
       email: z.string().min(10, { message: "email must have more then 10 charachters" }).email(),
-      password: z.string().min(10, { message: "password must have more then 10 charachter" }),
+      password: z.string().min(6, { message: "password must have more then 6 charachter" }),
     });
     try {
       const data = user_login_schema.parse({
