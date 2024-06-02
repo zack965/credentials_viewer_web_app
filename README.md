@@ -55,6 +55,9 @@ php artisan key:generate
 ```bash
 php artisan migrate
 ```
+```bash
+php artisan serv
+```
 
 Set up the laravel app using docker
 
