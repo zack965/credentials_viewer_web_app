@@ -24,7 +24,7 @@ class CreateCredentialRequestFile extends FormRequest
     {
         return [
             "credential_key" => "required|string",
-            'credential_value_file' => 'required|file|mimes:' . implode(', ', AllowdExtensionsFiles::getAllowdExtensionsFilesList()),
+            'credential_value_file' => 'required|file',
             "categorie_id" => "required|numeric",
         ];
     }

@@ -9,7 +9,10 @@ class AllowdExtensionsFiles
     public static function getAllowdExtensionsFilesList()
     {
         return [
-            "pdf", "png"
+            "pdf",
+            "png",
+            "jpeg",
+            "jpg"
         ];
     }
 }

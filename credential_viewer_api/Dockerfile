@@ -2,7 +2,7 @@
 FROM php:8.2-apache as web
 
 # Install Additional System Dependencies
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y && apt-get install -y nano \
     libzip-dev \
     zip
 
@@ -11,6 +11,9 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Enable Apache mod_rewrite for URL rewriting
 RUN a2enmod rewrite
+
+# Set custom php.ini file
+COPY php.ini /usr/local/etc/php/php.ini
 
 # Install PHP extensions
 RUN docker-php-ext-install pdo_mysql zip
@@ -34,4 +37,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN composer install
 
 # Set permissions
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+RUN chown -R www-data:www-data /var/www/html
+RUN chmod -R 775 /var/www/html
+RUN php artisan key:generate
+# RUN php artisan migrate
