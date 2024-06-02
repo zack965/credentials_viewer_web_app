@@ -63,39 +63,36 @@ Set up the laravel app using docker
 cd credential_viewer_api
 ```
 ```bash
-conposer install # or conposer update
+cp .env.example .env
 ```
+
+locally i get this error of permission denied so i use this command : 
 ```bash
-./vendor/bin/sail up
-```
-```bash
-./vendor/bin/sail artisan migrate
+sudo chmod -R 777 storage
 ```
 
 in the .env file set these values
 
 ```bash
-APP_PORT=8000
+APP_NAME=CredentialViewer
 DB_CONNECTION=mysql
-DB_HOST=mysql
+DB_HOST=db
 DB_PORT=3306
 DB_DATABASE=credentials_viewer_api
-DB_USERNAME=sail
-DB_PASSWORD=password
+DB_USERNAME=root
+DB_PASSWORD=assipti_opp_assipti
+APP_KEY=base64:QjHYFRGfXAp3j+pD9K7MNkbUKS2+uZaRCgaJPuKtYu8=
 ```
 
-if you are using linux or mac then you are ok, but if you use windows you will need to use wsl
-
-i do use ubuntu and i did face some permission issues so here is the solution that worked for me :
 ```bash
-docker exec -t <laravel container id> bash
-```
-```bash
-chown -R sail:sail storage
-```
-and then exit : 
-```bash
-exit
+docker compose up --build -d 
 ```
 
+i need to migrate the database so we will do that from the container 
 
+```bash
+docker exec -it CredentialViewer bash 
+```
+```bash
+php artisn migrate
+```
