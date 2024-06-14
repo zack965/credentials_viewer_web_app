@@ -1,13 +1,14 @@
 # Credential Viewer App
+As a software engineer, managing credentials securely is vital for various tasks. That's why I built the Credential Viewer App, a web-based solution to securely store and manage your credentials locally. Here's what makes it special:
 ## Introduction 
-In my work i needed a way to manage my list of credentials to multiple services like Jenkins , Gitlab , Servers and Databases etc... , so i did create this web app for doing so , i did built this app based on my needs so there's not many features but i am sure your needs are different from mine so if you want more features just open an issue or send a PR.
-I want to make it open source so other peolple can benefit from it and store he's own credentials in he's prefered envirement, it os dockerized so you can run it on your server or your local machine etc..
+I created this web app to meet my specific needs. Now, I'm opening it up for everyone! Leave your requirements in the comments, and I'll tailor it to fit your needs. It's open-source and Dockerized, offering you the flexibility to manage your credentials in a secure way.
 
-## Application functional overview
-In a sinple words this app can store your credentials in shape of categories , and each category can have multiple credentials , and each credential has it's own key and encrypted value, the value could be a file and it is stored directly on the app.
-
+## Functional Overview:
+The app organizes credentials into categories for easy access. Each credential is securely stored with its own key and encrypted value. Files are stored directly in the filesystem, ensuring maximum security. Need more features? Just let me know or contribute directly on GitHub.
 ## Technical overview
-the tech stack is simple , i did use laravel for the back end and react js for the front end and the Authentification using JWT
+Built with Laravel for the backend and React.js for the frontend, the app ensures a smooth user experience. Authentication is handled using JWT, ensuring the security of your data at every step.
+Ready to take control of your credentials? Try it out now and let me know your thoughts!
+
 
 ### Set up 
 after you cloning the projet you will see two folder , the first folder credential_viewer_api store the laravel app , and credential_viewer_ui store the react js app.
@@ -69,7 +70,7 @@ cd credential_viewer_api
 cp .env.example .env
 ```
 
-locally i get this error of permission denied so i use this command : 
+Locally in ubuntu i get this error of permission denied so i use this command : 
 ```bash
 sudo chmod -R 777 storage
 ```
